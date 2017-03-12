@@ -743,43 +743,8 @@ if __name__ == "__main__":
         audio.EOSCallback = alexa.EOSCallback
         audio.PlaybackStartedCallback = alexa.PlaybackStartedCallback
         audio.RecognizeCallback = alexa.Recognize
-
-        #audio.Listen(5000)
-        #return
-        for sentence in (
-                "set a timer for 30 seconds",
-                "set an alarm for 2pm tomorrow",                
-                "what is my flash news?",
-                "decrease volume",
-                "decrease volume",
-                "decrease volume",
-                "decrease volume",
-                "increase volume",
-                "increase volume",
-        ):
-            audiofp = audio.TTS(sentence)
-
-            # used for diagnostics
-            class streamedfile:
-                def __init__(self, content):
-                    self._content = content
-                    self._length = len(content.getvalue())
-                    self._offset = 0
-    
-                def read(self, length=None):
-                    #log.info("Offset %s length %s, want %s", self._offset, self._length, length)
-                    if self._offset == self._length:
-                        return ''
-                    block = self._content.read(length)
-                    self._offset = self._offset + len(block)
-                    return block
-
-                def close(self):
-                    log.info("Closing streamedfile")
-
-            #alexa.Recognize(streamedfile(audiofp))
-            alexa.Recognize(audiofp)            
-            time.sleep(4)
+        f= open('recording.wav', 'rb')
+        alexa.Recognize(f)            
         
     t = threading.Thread(target=alexa_thread, daemon=True)
     t.start()

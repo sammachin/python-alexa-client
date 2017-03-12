@@ -89,3 +89,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Project Specific Files
+tokens.json
+recording.wav
+config.py

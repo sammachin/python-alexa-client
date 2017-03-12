@@ -1,0 +1,8 @@
+Flask-RESTful==0.3.5
+colormath==2.1.1
+evdev==0.6.4
+pyalsaaudio==0.8.4
+pyudev==0.21.0
+requests-toolbelt==0.7.1
+hyper==0.7.0
+shove==0.6.6
